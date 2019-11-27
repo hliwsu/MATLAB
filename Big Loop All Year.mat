@@ -1,0 +1,126 @@
+% Big Loop Code
+clear;
+D=dir('E:\ESACCI\ESACCI-SOILMOISTURE-L3S-SSMV-PASSIVE_1978-2018-v04.4'); % Define structure variable
+cd('E:\ESACCI\ESACCI-SOILMOISTURE-L3S-SSMV-PASSIVE_1978-2018-v04.4') % Change directory to starting path 
+n_years=length(D);
+year_soilm=cell(n_years-2,2);
+startloc=[237 173 1];  
+count=[3 3 1];
+for k=4:length(D) % starting from 1979
+	currD=D(k).name;
+	cd(currD);
+	files=dir('*.nc');
+	for i=1:31
+		file_n=i
+		soilm=ncread(files(i).name, 'sm', startloc, count); % Read netCDF files.
+		soilmr=soilm(~isnan(soilm));  % Remove missing values. 
+		weighted_daily_soilmr=mean(soilmr); % Calculate daily soil moisture by 9X9 weight grids in Yakima River Basin.
+		daily_soilm_year_vector(i)=weighted_daily_soilmr; % Store calculated daily moisture data to a vector.	
+	end
+	% February
+	for j=1:28
+		i=j+31
+		soilm=ncread(files(i).name, 'sm', startloc, count); % Read netCDF files.
+		soilmr=soilm(~isnan(soilm));  % Remove missing values. 
+		weighted_daily_soilmr=mean(soilmr); % Calculate daily soil moisture by 9X9 weight grids in Yakima River Basin.
+		daily_soilm_year_vector(i)=weighted_daily_soilmr; % Store calculated daily moisture data to a vector.	
+	end
+
+	% March
+	for j=1:31
+		i=j+59
+		soilm=ncread(files(i).name, 'sm', startloc, count); % Read netCDF files.
+		soilmr=soilm(~isnan(soilm));  % Remove missing values. 
+		weighted_daily_soilmr=mean(soilmr); % Calculate daily soil moisture by 9X9 weight grids in Yakima River Basin.
+		daily_soilm_year_vector(i)=weighted_daily_soilmr; % Store calculated daily moisture data to a vector.	
+	end
+
+	% April
+	for j=1:30
+		i=j+90
+		soilm=ncread(files(i).name, 'sm', startloc, count); % Read netCDF files.
+		soilmr=soilm(~isnan(soilm));  % Remove missing values. 
+		weighted_daily_soilmr=mean(soilmr); % Calculate daily soil moisture by 9X9 weight grids in Yakima River Basin.
+		daily_soilm_year_vector(i)=weighted_daily_soilmr; % Store calculated daily moisture data to a vector.	
+	end
+
+	% May
+	for j=1:31
+		i=j+120
+		soilm=ncread(files(i).name, 'sm', startloc, count); % Read netCDF files.
+		soilmr=soilm(~isnan(soilm));  % Remove missing values. 
+		weighted_daily_soilmr=mean(soilmr); % Calculate daily soil moisture by 9X9 weight grids in Yakima River Basin.
+		daily_soilm_year_vector(i)=weighted_daily_soilmr; % Store calculated daily moisture data to a vector.	
+	end
+
+	% June
+	for j=1:30
+		i=j+151
+		soilm=ncread(files(i).name, 'sm', startloc, count); % Read netCDF files.
+		soilmr=soilm(~isnan(soilm));  % Remove missing values. 
+		weighted_daily_soilmr=mean(soilmr); % Calculate daily soil moisture by 9X9 weight grids in Yakima River Basin.
+		daily_soilm_year_vector(i)=weighted_daily_soilmr; % Store calculated daily moisture data to a vector.	
+	end
+
+	% July
+	for j=1:31
+		i=j+181
+		soilm=ncread(files(i).name, 'sm', startloc, count); % Read netCDF files.
+		soilmr=soilm(~isnan(soilm));  % Remove missing values. 
+		weighted_daily_soilmr=mean(soilmr); % Calculate daily soil moisture by 9X9 weight grids in Yakima River Basin.
+		daily_soilm_year_vector(i)=weighted_daily_soilmr; % Store calculated daily moisture data to a vector.	
+	end
+
+	% August
+	for j=1:31
+		i=j+212
+		soilm=ncread(files(i).name, 'sm', startloc, count); % Read netCDF files.
+		soilmr=soilm(~isnan(soilm));  % Remove missing values. 
+		weighted_daily_soilmr=mean(soilmr); % Calculate daily soil moisture by 9X9 weight grids in Yakima River Basin.
+		daily_soilm_year_vector(i)=weighted_daily_soilmr; % Store calculated daily moisture data to a vector.	
+	end
+
+	% September
+	for j=1:30
+		i=j+243
+		soilm=ncread(files(i).name, 'sm', startloc, count); % Read netCDF files.
+		soilmr=soilm(~isnan(soilm));  % Remove missing values. 
+		weighted_daily_soilmr=mean(soilmr); % Calculate daily soil moisture by 9X9 weight grids in Yakima River Basin.
+		daily_soilm_year_vector(i)=weighted_daily_soilmr; % Store calculated daily moisture data to a vector.	
+	end
+
+	% October
+	for j=1:31
+		i=j+273
+		soilm=ncread(files(i).name, 'sm', startloc, count); % Read netCDF files.
+		soilmr=soilm(~isnan(soilm));  % Remove missing values. 
+		weighted_daily_soilmr=mean(soilmr); % Calculate daily soil moisture by 9X9 weight grids in Yakima River Basin.
+		daily_soilm_year_vector(i)=weighted_daily_soilmr; % Store calculated daily moisture data to a vector.	
+	end
+
+	% November
+	for j=1:30
+		i=j+304
+		soilm=ncread(files(i).name, 'sm', startloc, count); % Read netCDF files.
+		soilmr=soilm(~isnan(soilm));  % Remove missing values. 
+		weighted_daily_soilmr=mean(soilmr); % Calculate daily soil moisture by 9X9 weight grids in Yakima River Basin.
+		daily_soilm_year_vector(i)=weighted_daily_soilmr; % Store calculated daily moisture data to a vector.	
+	end
+
+	% December
+	for j=1:31
+		i=j+334
+		soilm=ncread(files(i).name, 'sm', startloc, count); % Read netCDF files.
+		soilmr=soilm(~isnan(soilm));  % Remove missing values. 
+		weighted_daily_soilmr=mean(soilmr); % Calculate daily soil moisture by 9X9 weight grids in Yakima River Basin.
+		daily_soilm_year_vector(i)=weighted_daily_soilmr; % Store calculated daily moisture data to a vector.	
+	end
+
+	rm_daily_soilm_year_vector=daily_soilm_year_vector(~isnan(daily_soilm_year_vector)); % Remove missing values
+	yearly_average_soilm=mean(rm_daily_soilm_year_vector)
+
+	year_soilm{k-3,1}=1975+k;
+	year_soilm{k-3,2}=yearly_average_soilm;
+	cd('..'); % back to parent path
+
+end
